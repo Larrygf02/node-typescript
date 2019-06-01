@@ -21,6 +21,10 @@ export default class Mysql {
         this.conectarDB();
     }
 
+    public static get instance() {
+        return this._instance || (this._instance = new this());
+    }
+
     private conectarDB() {
         this.connection.connect(( err: mysql.MysqlError) => {
             if ( err ) {
